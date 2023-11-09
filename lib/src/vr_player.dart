@@ -1,4 +1,3 @@
-import 'dart:async';
 import 'dart:io';
 
 import 'package:flutter/foundation.dart';
@@ -41,33 +40,33 @@ class _VideoPlayerState extends State<VrPlayer> with WidgetsBindingObserver {
   @override
   void initState() {
     super.initState();
-    WidgetsBinding.instance.addObserver(this);
+    // WidgetsBinding.instance.addObserver(this);
   }
 
-  @override
-  void didUpdateWidget(VrPlayer oldWidget) {
-    super.didUpdateWidget(oldWidget);
-    if (oldWidget.width != widget.width) {
-      final pixelRatio =
-          Platform.isAndroid ? MediaQuery.of(context).devicePixelRatio : 1;
+  // @override
+  // void didUpdateWidget(VrPlayer oldWidget) {
+  //   super.didUpdateWidget(oldWidget);
+  //   if (oldWidget.width != widget.width) {
+  //     final pixelRatio =
+  //         Platform.isAndroid ? MediaQuery.of(context).devicePixelRatio : 1;
 
-      final width = widget.width * pixelRatio;
-      final height = widget.height * pixelRatio;
+  //     final width = widget.width * pixelRatio;
+  //     final height = widget.height * pixelRatio;
 
-      _videoPlayerController.onSizeChanged(width, height);
-    }
-  }
+  //     _videoPlayerController.onSizeChanged(width, height);
+  //   }
+  // }
 
-  @override
-  Future<void> didChangeAppLifecycleState(AppLifecycleState state) async {
-    if (state == AppLifecycleState.resumed) {
-      _wasResumed = true;
-      await _videoPlayerController.onResume();
-    } else if (state == AppLifecycleState.paused) {
-      await _videoPlayerController.onPause();
-    }
-    super.didChangeAppLifecycleState(state);
-  }
+  // @override
+  // Future<void> didChangeAppLifecycleState(AppLifecycleState state) async {
+  //   if (state == AppLifecycleState.resumed) {
+  //     _wasResumed = true;
+  //     await _videoPlayerController.onResume();
+  //   } else if (state == AppLifecycleState.paused) {
+  //     await _videoPlayerController.onPause();
+  //   }
+  //   super.didChangeAppLifecycleState(state);
+  // }
 
   @override
   void dispose() {
@@ -75,18 +74,18 @@ class _VideoPlayerState extends State<VrPlayer> with WidgetsBindingObserver {
       _playerObserver.cancelListeners();
       _videoPlayerController.pause();
     }
-    WidgetsBinding.instance.removeObserver(this);
+    // WidgetsBinding.instance.removeObserver(this);
     super.dispose();
   }
 
-  @override
-  Future<void> didChangeMetrics() async {
-    super.didChangeMetrics();
-    if (!_wasResumed) {
-      await _videoPlayerController.onOrientationChanged();
-    }
-    _wasResumed = false;
-  }
+  // @override
+  // Future<void> didChangeMetrics() async {
+  //   super.didChangeMetrics();
+  //   if (!_wasResumed) {
+  //     await _videoPlayerController.onOrientationChanged();
+  //   }
+  //   _wasResumed = false;
+  // }
 
   @override
   Widget build(BuildContext context) {

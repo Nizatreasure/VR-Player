@@ -43,19 +43,19 @@ class _VideoPlayerState extends State<VrPlayer> {
     // WidgetsBinding.instance.addObserver(this);
   }
 
-  // @override
-  // void didUpdateWidget(VrPlayer oldWidget) {
-  //   super.didUpdateWidget(oldWidget);
-  //   if (oldWidget.width != widget.width) {
-  //     final pixelRatio =
-  //         Platform.isAndroid ? MediaQuery.of(context).devicePixelRatio : 1;
+  @override
+  void didUpdateWidget(VrPlayer oldWidget) {
+    super.didUpdateWidget(oldWidget);
+    if (oldWidget.width != widget.width) {
+      final pixelRatio =
+          Platform.isAndroid ? MediaQuery.of(context).devicePixelRatio : 1;
 
-  //     final width = widget.width * pixelRatio;
-  //     final height = widget.height * pixelRatio;
+      final width = widget.width * pixelRatio;
+      final height = widget.height * pixelRatio;
 
-  //     _videoPlayerController.onSizeChanged(width, height);
-  //   }
-  // }
+      _videoPlayerController.onSizeChanged(width, height);
+    }
+  }
 
   // @override
   // Future<void> didChangeAppLifecycleState(AppLifecycleState state) async {

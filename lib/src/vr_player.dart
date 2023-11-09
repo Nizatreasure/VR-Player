@@ -35,7 +35,7 @@ class VrPlayer extends StatefulWidget {
 class _VideoPlayerState extends State<VrPlayer> with WidgetsBindingObserver {
   late VrPlayerController _videoPlayerController;
   late VrPlayerObserver _playerObserver;
-  bool _wasResumed = false;
+  // bool _wasResumed = false;
 
   @override
   void initState() {
